@@ -1,0 +1,102 @@
+
+.sociales {
+text-align: center;
+margin-bottom: 20px;
+}
+
+#timeline {
+width: 850px;
+overflow: hidden;
+position: relative;
+background: url('../images/dot.gif') left 45px repeat-x;
+}
+#dates {
+	width: 900px;
+	height: 60px;
+	overflow: hidden;
+}
+	#dates li {
+		list-style: none;
+		float: left;
+		width: 100px;
+		height: 50px;
+		font-size: 14px;
+		text-align: center;
+		background: url('../images/biggerdot.png') center bottom no-repeat;
+	}
+		#dates a {
+			line-height: 14px;
+			padding-bottom: 10px;
+		}
+		#dates .selected {
+	        font-size: 18px;
+		}
+
+#issues {
+	width: 850px;
+	overflow: auto;
+}	
+	#issues li {
+		width: 850px;
+		list-style: none;
+		float: left;
+	}
+		#issues li h1 {
+			color: #ffcc00;
+			font-size: 48px;
+			margin: 20px 0;
+			text-shadow: #000 1px 1px 2px;
+		}
+		#issues li p {
+			font-size: 14px;
+			margin-right: 70px;
+			font-weight: normal;
+			line-height: 22px;
+			text-shadow: #000 1px 1px 2px;
+		}
+
+#grad_left,
+#grad_right {
+	width: 100px;
+	height: 350px;
+	position: absolute;
+	top: 0;
+}
+	#grad_left {
+        left: 0;
+        background: url('../images/grad_left.png') repeat-y;
+	}
+	#grad_right {
+        right: 0;
+        background: url('../images/grad_right.png') repeat-y;
+	}
+
+#next,
+#prev {
+	position: absolute;
+	top: 0;
+	font-size: 70px;
+	top: 170px;
+	width: 22px;
+	height: 38px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+	#next:hover,
+	#prev:hover {
+		background-position: 0 -76px;
+	}
+	#next {
+		right: 0;
+		background-image: url('../images/next.png');
+	}
+	#prev {
+		left: 0;
+		background-image: url('../images/prev.png');
+	}
+		#next.disabled,
+		#prev.disabled {
+			opacity: 0.2;
+		}

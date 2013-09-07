@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Local Data Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script charset="UTF-8" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/bootstrap.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/results.js"></script>
+</head>
+
+<body onload="onload()">
+
+
+
+<div class="container-narrow">
+
+  <div class="masthead">
+    <ul class="nav nav-pills pull-right">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Wiki</a></li>
+      <li><a href="#">Contact</a></li>
+  </ul>
+  <h2 class="muted"><a href="index.html"><img src= "img/lde_logo.png" alt="Smiley face"/></a></h2>
+</div>
+
+<div id="search_container">
+  <form action ='results.html' >
+   <input id="search_text" name="q" title="Enter your search term" type="text" placeholder="Search by Name, Address, YPID, External ID, or other attributes"> 
+   <input id="search_button" name="go" tabindex="0" title="Search" type="submit" value="">
+</form>
+</div>
+<hr>
+
+
+<div class="container-fluid">
+    <h5 class="muted" id="num_results"> </h5>
+
+    <div class="row-fluid">
+        <div class="span8">
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <table id = "results_table" class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Market</th>
+                      <th>Address</th>
+                  </tr>
+              </thead>
+          </table>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <table id = "results_table2" class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Market</th>
+                      <th>Address</th>
+                  </tr>
+              </thead>
+          </table>
+          </div>
+
+
+<div id= "pagenum" class="pagination pagination-centered">
+  <ul>
+    <li class="disabled"><a href="#">«</a></li>
+    <li class="active"><a data-toggle="tab" href="#tab1">1</a></li>
+    <li><a data-toggle="tab" href="#tab2">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">»</a></li>
+</ul>
+</div>
+      </div>
+      </div>
+
+
+      <div class="span4">
+        <div id="mapDiv" class="map"></div>
+
+               <div id = "filters">
+
+            <ul class="nav nav-pills nav-stacked">
+                  
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" onclick="market_show()" href="#">Filter by Market<b class="caret"></b></a>
+                  </li>
+
+
+                  <div id = "market" class ="innav">
+                    <input id = "marketdrop" type="text" data-provide="typeahead" placeholder="Enter market here" autocomplete="off">
+
+                  </div> 
+
+            <hr>
+
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Filter by Type<b class="caret"></b></a>
+                    <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Restaurants</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Hotels & Accommodations</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Car and Truck Sales</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Stores & Services</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Banks & Credit Unions</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Doctors & Clinics</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Apparel</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Commercial Banking and Financial Services</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Real Estate Services</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Govenment Services</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Movies</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Family Services</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Music</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Floral & Decor</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Legal Services & Assistants</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="">Manufacturing & Supplies</a></li>
+                    </ul>
+                  </li>
+
+            <hr>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Filter by Attribute<b class="caret"></b></a>
+                    <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('Name')" href="#attribute">Name</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('Address')" href="#attribute">Address</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('State')" href="#attribute">State</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('Country')" href="#attribute">Country</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('Phone')" href="#attribute">Phone</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" onclick="attribute_show('Website')" href="#attribute">Website</a></li>
+                    </ul>
+
+                  </li>
+
+
+                  <div id = "attribute" class ="innav">
+                  <!--
+                                          <label class="checkbox">
+      <input type="checkbox"> Only show results that do not have this attribute
+    </label>-->
+                    <input id = "attdrop" type="text" data-provide="typeahead" placeholder="Enter value" autocomplete="off">
+
+                  </div> 
+
+
+            </ul>
+
+        </div> 
+    </div> 
+</div>
+
+</div>
+
+<hr>
+
+<div class="footer">
+    <p>&copy; 2013 Microsoft Corporation. All rights reserved.</p>
+</div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
