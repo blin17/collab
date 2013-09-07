@@ -23,9 +23,31 @@
       var date = new Date();
       var hour = date.getHours();
       var min = date.getMinutes();
-      console.log(hour);
-      console.log(min);
-      messagesRef.push({name:name, text:text, tempClass:tempClass});
+      var half = '';
+      var time = '';
+      if(hour < 12)
+      {
+        if(hour == 0)
+        {
+          hour = 12;
+        }
+          half = 'AM';
+      }
+      else
+      {
+        hour = hour - 12;
+        half = 'PM';
+      }
+      if(min < 10)
+      {
+        time = '' + hour + ':' + '0' + min + half;
+      }
+      else
+      {
+        time = '' + hour + ':' + min + half;
+      }
+      console.log(time);
+      messagesRef.push({name:name, text:text, tempClass:tempClass, time:time});
       $('#messageInput').val('');
     }
   });
@@ -33,11 +55,9 @@
   // Add a callback that is triggered for each chat message.
   messagesRef.limit(10).on('child_added', function (snapshot) {
     var message = snapshot.val();
-    if(message.tempClass == 'CS4810') {
       $('<div/>').text(message.text).prepend($('<em/>')
-        .text(message.name+': ')).appendTo($('#messagesDiv'));
+        .text(message.name+' '+message.time+': ')).appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-    }
   });
 </script>
 </body>
