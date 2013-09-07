@@ -1,4 +1,8 @@
-var ref = new Firebase('https://studywithme.firebaseio.com');
+
+var UID = 11; //userID 
+var CID = 1; //classID
+var text = $('#messageInput').val();
+var time = getTime();var ref = new Firebase('https://studywithme.firebaseio.com');
 
 var auth = new FirebaseSimpleLogin(ref, function(error, user) {
   if (error) {
