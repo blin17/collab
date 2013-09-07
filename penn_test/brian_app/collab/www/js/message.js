@@ -1,23 +1,36 @@
 
 // Get a reference to the root of the chat data.
 var messagesRef = new Firebase('https://studywithme.firebaseio.com/messages/');
-var MID = 0;
+var lat = 0;
+var lon = 0;
+
 function post(){
-    var UID = 11; //userID 
+    if (navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(showPosition);
+    }
+ }
+
+function update(){
+	var UID = 11; //userID 
 	var CID = 1; //classID
-	var location = "Ithaca, NY";
-    var text = $('#messageInput').val();
+	var text = $('#messageInput').val();
 	var time = getTime();
-    messagesRef.child(MID).set({userID:UID, classID: CID, location: location, text:text, time:time});
-    $('#messageInput').val('');	
-	MID += 1;
-	console.log(MID);
+	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time});
+	$('#messageInput').val('');
+}
+
+function showPosition(position, cb)
+{
+	lat = position.coords.latitude;
+	lon = position.coords.longitude;
+	update();
 }
 
 function getTime(){
     var date = new Date();
     var hour = date.getHours();
     var min = date.getMinutes();
+    var sec = date.getSeconds();
     var half = '';
     var time = '';
     if(hour < 12)
@@ -38,11 +51,11 @@ function getTime(){
     }
     if(min < 10)
     {
-      time = '' + hour + ':' + '0' + min + half;
+      time = '' + hour + ':' + '0' + min + ':' + sec + half;
     }
     else
     {
-      time = '' + hour + ':' + min + half;
+      time = '' + hour + ':' + min + ':' + sec + half;
     }
 	return time;
 }
