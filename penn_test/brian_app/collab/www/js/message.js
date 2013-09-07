@@ -1,10 +1,9 @@
 
 // Get a reference to the root of the chat data.
 var messagesRef = new Firebase('https://studywithme.firebaseio.com/');
-
 function post(){
-
-    var name = $('#nameInput').val();
+    var name = 2;
+	var classId = 1;
     var text = $('#messageInput').val();
     var tempClass = $('#classInput').val();
     var date = new Date();
@@ -36,7 +35,12 @@ function post(){
     {
       time = '' + hour + ':' + min + half;
     }
-    console.log(time);
-    messagesRef.push({name:name, text:text, tempClass:tempClass, time:time});
+    messagesRef.child().set({userID:id, text:text, time:time});
     $('#messageInput').val('');	
+}
+
+
+messagesRef.child("users/" + userID).on("value", function(snapshot))
+{
+	snapshot.name.val()
 }
