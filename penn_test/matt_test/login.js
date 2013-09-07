@@ -7,4 +7,6 @@ $("#login").submit(function() {
 		password: password,
 		rememberMe: true
 	});
+
+	return false;
  });
