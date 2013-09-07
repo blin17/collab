@@ -48,3 +48,15 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+// Get a reference to the root of the chat data.
+var messagesRef = new Firebase('https://studywithme.firebaseio.com/');
+
+// Add a callback that is triggered for each chat message.
+messagesRef.limit(10).on('child_added', function (snapshot) {
+  var message = snapshot.val();
+    $('<div/>').text(message.text).prepend($('<em/>')
+      .text(message.name+' '+message.time+': ')).appendTo($('#messagesDiv'));
+    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+});
