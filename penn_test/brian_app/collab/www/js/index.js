@@ -42,22 +42,26 @@ var app = {
         var listeningElement = parentElement.querySelector('.load_app');
         var receivedElement = parentElement.querySelector('.loaded_app');
 
-        listeningElement.setAttribute('style', 'display:none;');
+//        listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
 };
 
-
 // Get a reference to the root of the chat data.
 var messagesRef = new Firebase('https://studywithme.firebaseio.com/messages');
-
+var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
 // Add a callback that is triggered for each chat message.
 messagesRef.limit(10).on('child_added', function (snapshot) {
-  var message = snapshot.val();
+	var user_name = "";
+	var message = snapshot.val();
+	
+	var userRef = usersRef.child(message.userID).on('value', function(names){
+		user_name = names.val().name;
+	    $('<div/>').text(message.text).prepend($('<em/>')
+	      .text(user_name+' '+message.time+': ')).prependTo($('#messagesDiv'));
+	    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	})
 
-    $('<div/>').text(message.text).prepend($('<em/>')
-      .text(message.name+' '+message.time+': ')).prependTo($('#messagesDiv'));
-    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 });
