@@ -1,5 +1,5 @@
 $("#login").submit(function() {
-	console.log("login credentials submitted");
+	alert("login credentials submitted");
 	var email = $("#email").val();
 	var password = $("#password").val();
 	auth.login("password", {
@@ -8,5 +8,5 @@ $("#login").submit(function() {
 		rememberMe: true
 	});
 
-	return false;
+	return true;
  });

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title>testmenu</title>
+	    <script type='text/javascript' src="jquery-1.10.2.js"></script>
+	    <style>
+	    	#panel {
+	    		position: fixed;
+	    		top: 0px;
+				left: 0px;
+	    	}
+			
+			#popout {               /* fix the popout to the left side of the screen */
+			    position: absolute;
+			    left: -75px;
+			    width: 75px;
+			    border: 1px dotted gray;
+			    color: gray;
+			}
+
+			#main: {
+				position: absolute;
+				left: 0px;
+			}
+	    </style>
+ 	</head>
+
+  	<body>
+  		<div class="hidden" id="panel">
+			<div id="popout">
+			    <br style="clear: both" />
+			    <ul>
+			        <li>a</li>
+			        <li>b</li>
+			        <li>c</li>
+			        <li>d</li>        
+			    </ul>
+			</div>
+			<div id="main">
+				<button id="toggle">Show/Hide</button>
+			</div>
+		</div>
+		<script type='text/javascript' src="pushmenu.js"></script>
+  	</body>
+</html>
