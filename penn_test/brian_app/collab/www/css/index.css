@@ -87,13 +87,12 @@ h1 {
     padding:2px 0px;
 }
 
-.event.listening {
+.event.load_app{
     background-color:#333333;
     display:block;
 }
 
-.event.received {
-    background-color:#4B946A;
+.event.loaded_app {
     display:none;
 }
 
