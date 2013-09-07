@@ -17,6 +17,26 @@
     <script charset="UTF-8" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script charset="UTF-8" type="text/javascript" src="js/bootstrap.js"></script>
     <script charset="UTF-8" type="text/javascript" src="js/results.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+    <script>
+        var messagesRef = new Firebase('https://studywithme.firebaseio.com/');
+        function addClass()
+        {
+            var className = $('#classdrop').val();
+            console.log(className);
+            
+            $("#pinned").html("<strong>Added to schedule</strong>");
+            $("#pinned").attr('class', 'unem');
+            $("#pinned").slideDown(function()
+                {
+                    console.log("slideUp");
+                });
+        }
+        $('#add').click(function()
+        {
+            console.log("clicked");
+        });
+    </script>
 </head>
 
                <div id = "filters">
@@ -30,12 +50,14 @@
 
                   <div id = "classes" class ="innav">
                     <input id = "classdrop" type="text" data-provide="typeahead" placeholder="Enter class here" autocomplete="off"></br>
-					  <button class="btn" type="button">Pin to Schedule</button>
-
+					  <button class="btn" id = "add" type="button" onclick="addClass()">Add to Classes</button>
                   </div> 
+                  <div id = "pinned" class = "unem hidden"> placeholder </div>
+                  
 
 
-</div> 
+</div>   
+
 
 </body>
 </html>

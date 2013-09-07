@@ -1,7 +1,7 @@
 <head>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-<link rel="stylesheet" type="text/css" href="https://www.firebase.com/css/example.css">
+<link rel="stylesheet" type="text/css">
 </head>
 <h1>Collab</h1>
 <body>
@@ -12,10 +12,10 @@
 <script>
 
   // Get a reference to the root of the chat data.
-  var messagesRef = new Firebase('https://k8c6dciqd85.firebaseio-demo.com/');
+  var messagesRef = new Firebase('https://studywithme.firebaseio.com/');
 
   // When the user presses enter on the message input, write the message to firebase.
-  $('#messageInput').keypress(function (e) {
+  $('#messageInput, #classInput, #nameInput').keypress(function (e) {
     if (e.keyCode == 13) {
       var name = $('#nameInput').val();
       var text = $('#messageInput').val();
@@ -35,7 +35,10 @@
       }
       else
       {
-        hour = hour - 12;
+        if(hour != 12)
+        {
+          hour = hour - 12;  
+        }
         half = 'PM';
       }
       if(min < 10)
