@@ -1,11 +1,20 @@
 
 // Get a reference to the root of the chat data.
-var messagesRef = new Firebase('https://studywithme.firebaseio.com/');
+var messagesRef = new Firebase('https://studywithme.firebaseio.com/messages/');
+var MID = 0;
 function post(){
-    var name = 2;
-	var classId = 1;
+    var UID = 11; //userID 
+	var CID = 1; //classID
+	var location = "Ithaca, NY";
     var text = $('#messageInput').val();
-    var tempClass = $('#classInput').val();
+	var time = getTime();
+    messagesRef.child(MID).set({userID:UID, classID: CID, location: location, text:text, time:time});
+    $('#messageInput').val('');	
+	MID += 1;
+	console.log(MID);
+}
+
+function getTime(){
     var date = new Date();
     var hour = date.getHours();
     var min = date.getMinutes();
@@ -35,12 +44,6 @@ function post(){
     {
       time = '' + hour + ':' + min + half;
     }
-    messagesRef.child().set({userID:id, text:text, time:time});
-    $('#messageInput').val('');	
+	return time;
 }
 
-
-messagesRef.child("users/" + userID).on("value", function(snapshot))
-{
-	snapshot.name.val()
-}
