@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
+  </head>
+
+  <body>
+    <form id="login">
+      Log in to Collab<br>
+      Email: <input type="text" name="email" value="mso32@cornell.edu"><br>
+      Password: <input type="password" name="password" value="password"><br>
+      Remember Me:<input type="checkbox" name="rememberCheckbox" id="rememberCheckbox" unchecked><br>
+      <input type="submit" value="Submit"><br>
+    </form>
+    <hr>
+    <div id="register">
+      Don't have an account yet?<br>
+      <a href="http://www.collab.com/register">Sign up for free</a>
+      </div>
+    <script type='text/javascript'>
+      var ref = new Firebase('https://studywithme.firebaseio.com');
+      var auth = new FirebaseSimpleLogin(ref, function(error, user) {
+        if (error) {
+          // an error occurred while attempting login
+          console.log(error);
+        } else if (user) {
+          // user authenticated with Firebase
+          console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+        } else {
+          // user is logged out
+        }
+      });
+
+      $("#login").submit(function() {
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var checkbox = $("#rememberCheckbox").val();
+        auth.login("password", {
+              email: email,
+              password: password,
+              rememberMe: checkbox
+          });
+        }); 
+
+    </script>
+  </body>
+</html>

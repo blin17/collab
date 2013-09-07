@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
+  </head>
+
+  <body>
+    <form id="login">
+      Create your free Collab account now with a .edu email<br>
+
+      First Name: <input type="text" name="fname"><br>
+      Last Name: <input type="text" name="lname"><br>
+      Email: <input type="text" name="email"><br>
+      Password: <input type="password" name="password"><br>
+      Confirm Password: <input type="password" name="confirmPassword"><br>
+      <input type="submit" value="Submit"><br>
+    </form>
+
+    <script type='text/javascript'>
+      var ref = new Firebase('https://studywithme.firebaseio.com');
+      var auth = new FirebaseSimpleLogin(ref, function(error, user) {
+        if (error) {
+          // an error occurred while attempting login
+          console.log(error);
+        } else if (user) {
+          // user authenticated with Firebase
+          console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+        } else {
+          // user is logged out
+        }
+      });
+
+      $("#login").submit(function() {
+        var email = $("#login-email").val();
+        var password = $("#login-password").val();
+        var checkbox = $("#rememberCheckbox").val();
+        auth.login("password", {
+              email: email,
+              password: password,
+              rememberMe: checkbox
+          });
+        }); 
+
+    </script>
+  </body>
+</html>
