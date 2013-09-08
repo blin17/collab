@@ -59,9 +59,16 @@ messagesRef.on('child_added', function (snapshot) {
 
     if(classID == message.classID)
     {
-        $('<div/>').text(message.text).prepend($('<em/>')
-          .text(message.name+' '+message.time+': ')).prependTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
+        //$('<div/>').text(message.text).prepend($('<em/>')
+          //.text(message.name+' '+message.time+': ')).prependTo($('#messagesDiv'));
+        //$('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
+
+        $('#messageList').append("<li class='message'><div class='message_info'>" + 
+            "<p class='message_name'>" + message.name + "</p>" + 
+            "<p class='message_time'>" + message.time + "</p></div>" +
+            "<div class='message_message'>" + message.text + "</div></li>");
+
+
     }
 
 });	

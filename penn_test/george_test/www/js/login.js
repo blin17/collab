@@ -1,9 +1,9 @@
 var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
 
 $("#login").submit(function() {
-	console.log("login credentials submitted");
 	var email = $("#email").val();
 	var password = $("#password").val();
+	console.log("email:" + email + " password:" + password);
 	var success = 0;
 	if (email == '') {
 		$("span").text("Please enter your email").show().fadeOut(2000);
