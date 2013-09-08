@@ -14,15 +14,15 @@ function update(){
   debugger;
 	var UID = localStorage.getItem('userID'); //userID 
 	var CID = localStorage.getItem('classID'); //classID
+  var name = localStorage.getItem('name');
 	var text = $('#messageInput').val();
 	var time = getTime();
-	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time});
+	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time, name:name});
 	$('#messageInput').val('');
 }
 
 function showPosition(position, cb)
 {
-  debugger;
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
 	update();
@@ -30,8 +30,6 @@ function showPosition(position, cb)
 
 function error()
 {
-  lat = 0;
-  lon = 0;
   update();
 }
 

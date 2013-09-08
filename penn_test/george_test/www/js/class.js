@@ -54,25 +54,14 @@ var messagesRef = new Firebase('https://studywithme.firebaseio.com/messages');
 var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
 var classID = localStorage.getItem('classID');
 // Add a callback that is triggered for each chat message.
-messagesRef.limit(10).on('child_added', function (snapshot) {
-	var user_name = "";
+messagesRef.on('child_added', function (snapshot) {
 	var message = snapshot.val();
-	
-	var userRef = usersRef.child(message.userID).on('value', function(names){
-		user = names.val();
-		if (user!=null){
-		  user_name = names.val().name;
-		}
-		else{
-			user_name = "";
-		}
-        debugger;
-		if(classID == message.classID)
-        {
-    	    $('<div/>').text(message.text).prepend($('<em/>')
-    	      .text(user_name+' '+message.time+': ')).prependTo($('#messagesDiv'));
-    	    $('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
-	    }
-    })
+
+    if(classID == message.classID)
+    {
+        $('<div/>').text(message.text).prepend($('<em/>')
+          .text(message.name+' '+message.time+': ')).prependTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
+    }
 
 });	

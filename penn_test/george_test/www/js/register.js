@@ -45,6 +45,7 @@ $("#register").submit(function() {
 		  // user authenticated with Firebase
 		  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
 		  localStorage.setItem('userID', user.id);
+		  localStorage.setItem('name', name);
 		  window.location.replace("displayClass.html");
 		} else {
 		  // user is logged out

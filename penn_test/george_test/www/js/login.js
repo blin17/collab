@@ -1,3 +1,5 @@
+var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
+
 $("#login").submit(function() {
 	console.log("login credentials submitted");
 	var email = $("#email").val();
@@ -24,8 +26,11 @@ $("#login").submit(function() {
 		  // user authenticated with Firebase
 		  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
 		  localStorage.setItem('userID', user.id);
-			$("span").text("SUCCESS").show().fadeOut(500);	
-			window.location.replace("displayClass.html");
+			$("span").text("SUCCESS").show().fadeOut(500);		
+			var userRef = usersRef.child(user.id).on('value', function(names) {
+				localStorage.setItem('name', names.val().name);
+				window.location.replace("displayClass.html");	
+			});
 
 		} else {
 		  // user is logged out
