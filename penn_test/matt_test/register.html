@@ -2,23 +2,28 @@
 <html>
   <head>
     <title>Register</title>
-    <script type='text/javascript' src="jquery-1.10.2.js"></script>
-    <script type='text/javascript' src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <script type='text/javascript' src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
-    <script type='text/javascript' src="authentication.js"></script>
-    <script type='text/javascript' src="register.js"></script>
+    <style>
+      span { color:red; }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>  
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script type='text/javascript'
+        src='https://cdn.firebase.com/v0/firebase-simple-login.js'>
+    </script>
+    
   </head>
 
   <body>
-    <form id="register">
+    <form id="register" action= "class.html">
       Create your free Collab account now<br>
 
-      First Name: <input type="text" name="fname"><br>
-      Last Name: <input type="text" name="lname"><br>
-      School Email: <input type="text" name="email"><br>
-      Password: <input type="password" name="password"><br>
-      Confirm Password: <input type="password" name="confirmPassword"><br>
+      Name: <input type="text" id="name"><br>
+      School Email: <input type="text" id="email"><br>
+      Password: <input type="password" id="password"><br>
+      Confirm Password: <input type="password" id="confirmPassword"><br>
       <input type="submit" value="Submit"><br>
     </form>
+    <span></span>
+    <script src="js/register.js"></script>
   </body>
 </html>
