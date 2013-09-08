@@ -58,25 +58,18 @@ messagesRef.limit(10).on('child_added', function (snapshot) {
 	var message = snapshot.val();
 	
 	var userRef = usersRef.child(message.userID).on('value', function(names){
+		user = names.val();
+		if (user!=null){
 		user_name = names.val().name;
+			
+		}
+		else{
+			user_name = "";
+		}
+		
 	    $('<div/>').text(message.text).prepend($('<em/>')
 	      .text(user_name+' '+message.time+': ')).prependTo($('#messagesDiv'));
 	    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 	})
 
 });	
-	var chatRef = new Firebase('https://studywithme.firebaseio.com/');
-	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-	if (error) {
-	   // an error occurred while attempting login
-	   console.log(error);
-	   $("span").text("Login Error").show().fadeOut(500);
-	   return false;
-	} else if (user) {
-	alert(user.id);
-
-	} else {
-	  // user is logged out
-	}
-	return false;
-});
