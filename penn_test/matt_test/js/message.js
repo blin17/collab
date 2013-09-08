@@ -15,7 +15,8 @@ function update(){
 	var CID = 1; //classID
 	var text = $('#messageInput').val();
 	var time = getTime();
-	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time});
+  var date = getDate();
+	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time, date:date});
 	$('#messageInput').val('');
 }
 
@@ -51,12 +52,20 @@ function getTime(){
     }
     if(min < 10)
     {
-      time = '' + hour + ':' + '0' + min + ':' + sec + half;
+      time = '' + hour + ':' + '0' + min + half; //+ ':' + sec + half;
     }
     else
     {
-      time = '' + hour + ':' + min + ':' + sec + half;
+      time = '' + hour + ':' + min + half; // + ':' + sec + half;
     }
 	return time;
+}
+
+function getDate(){
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var day = date.getDate();
+  return ('' + month + '/'+ day + '/' (year % 100));
 }
 
