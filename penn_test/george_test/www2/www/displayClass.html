@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Collab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script charset="UTF-8" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+
+<title>Collab</title>
+</head>
+
+<body onload= "onload()">
+    <div id="deviceready" class="blink">
+    <div class="event loaded_app">
+
+<!-- start with header-->
+<div id = "action">
+                <div id = "top"> </div>
+                <div class="row header">
+                    
+                    <a class="btn left" href="displayClass.html"><i class=" icon-home"></i></a>
+                    <div class="middle">
+                    <p id = 'header'>Schedule<p></div>
+                    <a class="btn right" href="addClasses.html"><i class=" icon-plus"></i></a>
+                </div>
+</div>  
+<!-- body if necessary -->
+    <div id='classDiv'>
+    <ul id = "ulDiv" class ="nav nav-tabs nav-stacked classes">
+    </ul>
+    </div>	
+	<script>
+	
+    var id = localStorage.getItem('userID');
+    console.log(id);
+    var baseRef = new Firebase('https://studywithme.firebaseio.com/');
+
+    function onload(display){
+        displayName(function(display, classes)
+        {
+            //document.getElementById("header").innerHTML = display;
+            
+            for(var i = 0; i < classes.length; i++)
+            {
+
+                console.log(classes);
+                $('<div/>').html("<a href = \"class.html\" onclick = \"saveClass('"+classes[i]+"')\"><li class = \"class_list\">" + classes[i] + "</li></a>").appendTo($('#ulDiv'));
+
+                $('#ulDiv')[0].scrollTop = $('#ulDiv')[0].scrollHeight;
+            }
+        });
+	}
+
+    function saveClass(classID)
+    {
+        debugger;
+        localStorage.setItem('classID', ''+classID);
+    }
+
+    function displayName(cb)
+    {
+        var query = "users/" + id;
+        baseRef.child(query).once('value', function(snapshot){
+        display = "Classes for " + snapshot.val().name;
+        cb(display, snapshot.val().classes);
+      });
+    }
+	</script>
+</body>
+</html>
