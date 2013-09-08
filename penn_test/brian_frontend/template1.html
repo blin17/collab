@@ -9,6 +9,7 @@
 <!-- stylesheets -->
 		<link href="css/bootstrap.css" rel="stylesheet">
 	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/style2.css" rel="stylesheet">
 	
 <!-- scripts -->
 		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
@@ -22,17 +23,29 @@
 		<div class="event loaded_app">
 			
 <!-- start with header-->
+<div id = "action">
 				<div id = "top"> </div>
 				<div class="row header">
-					<div class="span1 left"><a class="btn" href="class.html"><i class=" icon-home"></i></a></div>
-					<div class="span2 middle"><img src="img/logo.png" alt="logo"/> </div>
-					<div class="span1 right"><a class="btn" href="message.html"><i class=" icon-pencil"></i></a></div></span></div>
+					
+					<a class="btn left" href="class.html"><i class=" icon-home"></i></a>
+					<div class="middle">
+					<p>Schedule<p></div>
+					<a class="btn right" href="message.html"><i class=" icon-plus"></i></a>
 				</div>
-				
+</div>	
 <!-- body if necessary -->
-			<h3 id = 'name'></h3>
-			<div id='messagesDiv'></div>
-		
+
+<div id = "body">
+	
+	<ul class="nav nav-tabs nav-stacked classes">
+		<a href= "#"><li class = "class_list">CS 4780</li></a>
+		<a href= "#"><li class = "class_list">AEM 4280</li></a>
+		<a href= "#"><li class = "class_list">AEM 4120</li></a>
+		<a href= "#"><li class = "class_list">CS 5150</li></a>
+		<a href= "#"><li class = "class_list">ECON 3140</li></a>
+	</ul>
+	
+	</div>
 			
 <!-- finish with footer-->
 

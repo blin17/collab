@@ -1,0 +1,29 @@
+.row {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(19%,#828c95), color-stop(100%,#28343b));
+}
+
+#left-btn {
+	position: fixed;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+#right-btn {
+	position: fixed;
+	float: right;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.span2 {
+	color: white;
+	text-shadow: 1px 1px black;
+	text-align: center;
+	width: 100%;
+}
