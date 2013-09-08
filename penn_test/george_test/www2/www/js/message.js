@@ -11,7 +11,6 @@ function post(){
  }
 
 function update(){
-  debugger;
 	var UID = localStorage.getItem('userID'); //userID 
 	var CID = localStorage.getItem('classID'); //classID
   var name = localStorage.getItem('name');

@@ -22,20 +22,19 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-	    <link href="css/bootstrap.css" rel="stylesheet">
-	    <link href="css/style.css" rel="stylesheet">
-		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+<!-- stylesheets -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style2.css" rel="stylesheet">
+    
+<!-- scripts -->
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
 		
         <title>Collab</title>
     </head>
     <body>
-    <div id="deviceready" class="blink">
-		<!--
-	        <div class="event load_app">
-	                <p>Connecting to Device</p>
-	            </div>
-			-->
+    <!--<div id="deviceready" class="blink">
 		<div class="event loaded_app">
 				<div class="row">
 					<div class="span1"><a class="btn" href="displayClass.html">Cancel</a></div>
@@ -43,8 +42,33 @@
 					<div class="span1"><a class="btn" id = 'postButton' href="class.html">Post</a></div>
 				</div>
 					<input type='text' id='messageInput' placeholder='Message'>
-		</div>
+	</div>-->
+
+    <div id = "action">
+                <div id = "top"> </div>
+                <div class="row header">
+                    
+                    <a class="btn left" href="class.html"><i class=" icon-arrow-left"></i></a>
+                    <div class="middle">
+                    <p>Message<p>
+                        </div>
+                    <a class="btn right" id = 'postButton' href="class.html"><i class="icon-ok"></i></a>
+                </div>
+    </div>  
+
+    <div id = "body">
+    <div id = "body_top"></div>
+    <!-- map should get height using javascript -->
+        <div class="info">
+        <ul class="nav nav-pills nav-stacked">
+            <li>    <textarea id = "messageInput" class="input-block-level" rows="3" placeholder='Collobrate with your classmates...'></textarea></li>  
+        </ul>
+</div>
 		
+    </div>
+    <div class="row footer">
+    <div class="span2"></div>
+    <div class="span2"></div>
     </div>
         <script type="text/javascript" src="js/message.js"></script>
         <script type="text/javascript">
