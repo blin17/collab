@@ -59,10 +59,18 @@ messagesRef.on('child_added', function (snapshot) {
 
     if(classID == message.classID)
     {
-        $('<div/>').text(message.text).prepend($('<em/>')
-          .text(message.name+' '+message.time+': ')).prependTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
+
+        $('<li/>').text(message.text).prepend($('<em/>')
+          .text(message.name+' '+message.time+': ')).prependTo($('#messages'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     }
 
 });	
+
+function onload()
+{
+    var classID = localStorage.getItem('classID');
+    console.log(classID);
+    $('#className').html(classID); 
+}
 

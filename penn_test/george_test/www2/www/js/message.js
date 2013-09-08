@@ -5,12 +5,14 @@ var lat = 0;
 var lon = 0;
 
 function post(){
+  debugger;
     if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(showPosition, error);
     }
  }
 
 function update(){
+  debugger;
 	var UID = localStorage.getItem('userID'); //userID 
 	var CID = localStorage.getItem('classID'); //classID
   var name = localStorage.getItem('name');
