@@ -1,0 +1,16 @@
+#top{
+	background-color: #b3b;
+	height:2px;
+}
+.header{
+	background-image: url(../img/pattern.png);
+	background-repeat: repeat;
+	background-color: #FFF;
+	height: 100px;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}

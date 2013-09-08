@@ -8,6 +8,9 @@ function post(){
     if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(showPosition);
     }
+	else{
+		update();
+	}
  }
 
 function update(){
