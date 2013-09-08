@@ -2,26 +2,57 @@
 <html>
   <head>
     <title>Login</title>
-    <style>
-      span {color:red;}
-    </style>
+
+    <!-- metadata -->
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <!-- stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- scripts -->    
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type='text/javascript' src="https://cdn.firebase.com/v0/firebase.js"></script>
     <script type='text/javascript' src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
   </head>
 
   <body>
-    <form id="login" action = "class.html">
+    <!-- start with header-->
+    <div id = "top"> </div>
+    <div class="row header cover"><img src="img/logo.png" alt="logo" id= "logo"/></div>
+    <div id = "top2"> </div>
+
+    <!-- body if necessary -->
+    <div id = "body_cover">
+      <div id = "body_top"></div>
+      <form id = "login" action = "class.html">
+        <ul class="nav nav-pills nav-stacked">
+          
+          <li>  <input class="input-block-level" type='text' id='email' placeholder='john.doe@school.edu'></li>
+          <li>  <input class="input-block-level" type='password' id='password' placeholder='*********'></li>
+          <li>  <input type="submit" action= "class.html" value="Log In" class= "btn btn-warning btn-block"></li>
+          <li>  <a href= "register.html" class="btn btn-block reg_btn" >Register</a></li>
+        </ul>
+        
+      </form>
+    </div>    
+
+    <!-- finish with footer-->
+
+    <!--<form id="login" action = "class.html">
       Log in to Collab<br>
       School Email: <input type="text" id="email" value="example@school.edu"><br>
       Password: <input type="password" id="password" value="password"><br>
-      <input type="submit" action= "class.html" value="Log In"><br>
-      
-    </form>
-    <a href="register.html">
-      <button>Sign Up</button>
-    </a>
-    <span></span>
+      <input type="submit" action= "class.html" value="Log In"><br>    
+    </form>-->
+
+    <div class="row footer">
+      <div class="span2"></div>
+      <div class="span2"></div>
+    </div>
+
     <script type='text/javascript' src="js/login.js"></script>
   </body>
 </html>

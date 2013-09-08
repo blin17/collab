@@ -1,6 +1,7 @@
 var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
 
 $("#login").submit(function() {
+	debugger;
 	var email = $("#email").val();
 	var password = $("#password").val();
 	console.log("email:" + email + " password:" + password);
