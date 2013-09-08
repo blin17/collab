@@ -15,15 +15,15 @@ $("#register").submit(function() {
 		$("span").text("Please enter your email").show().fadeOut(1000);	
 		return false;
 	}
-
-	if (email.length > 5) {
-		if (email.substring(email.length - 4, email.length) != ".edu"){
-			$("span").text("Please enter a valid school email ending in .edu").show().fadeOut(1000);		
+	if(email.length >= 5){
+		if(email.substring(email.length - 4, email.length) != ".edu")
+		{
+			$("span").text("Please enter a valid school email ending in .edu").show().fadeOut(1000);
 			return false;
 		}
 	}
-	else {
-		$("span").text("Please enter your email").show().fadeOut(1000);		
+	else{
+		$("span").text("Please enter your email").show().fadeOut(1000);
 		return false;
 	}
 	if (password == '') {
@@ -38,15 +38,16 @@ $("#register").submit(function() {
   	var chatRef = new Firebase('https://studywithme.firebaseio.com/');  	
   	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 		if (error) {
-		   	// an error occurred while attempting login
-		   	console.log(error);
-		   	return false;
+		   // an error occurred while attempting login
+		   console.log(error);
+		   return false;
 		} else if (user) {
-		  	// user authenticated with Firebase
-		  	console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-			return true;
+		  // user authenticated with Firebase
+		  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+		  localStorage.setItem('userID', user.id);
+		  window.location.replace("displayClass.html");
 		} else {
-		  	// user is logged out
+		  // user is logged out
 		}
 	});
  
@@ -60,8 +61,8 @@ $("#register").submit(function() {
             });
             
             var tempId = 'users/' + user.id;
+            localStorage.setItem('userID', user.id);
             chatRef.child(tempId).set({name:name, email:email, classes:[]});
-            window.location.href = "class.html"
 	        
         }
         else{

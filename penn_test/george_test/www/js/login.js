@@ -2,7 +2,7 @@ $("#login").submit(function() {
 	console.log("login credentials submitted");
 	var email = $("#email").val();
 	var password = $("#password").val();
-	
+	var success = 0;
 	if (email == '') {
 		$("span").text("Please enter your email").show().fadeOut(2000);
 		return false;
@@ -12,25 +12,26 @@ $("#login").submit(function() {
 		$("span").text("Please enter your password").show().fadeOut(2000);
 		return false;
 	}	
-
+	
 	var chatRef = new Firebase('https://studywithme.firebaseio.com/');  	
   	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 		if (error) {
 		   // an error occurred while attempting login
 		   console.log(error);
-		   $("span").text("Login Error").show().fadeOut(2000);
+		   $("span").text("Login Error").show().fadeOut(500);
 		   return false;
 		} else if (user) {
 		  // user authenticated with Firebase
 		  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-			$("span").text("SUCCESS").show().fadeOut(2000);
-		  return true;
+		  localStorage.setItem('userID', user.id);
+			$("span").text("SUCCESS").show().fadeOut(500);	
+			window.location.replace("displayClass.html");
 
 		} else {
 		  // user is logged out
 		}
+		return false;
 	});
-
 	auth.login('password', {
 		email: email,
 		password: password,
@@ -50,5 +51,9 @@ $("#login").submit(function() {
 
 	return false;
 	*/
+	console.log("hello");
+	if (success == 1){
+		return true;
+	}
 	return false;
  });

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Collab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script charset="UTF-8" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/bootstrap.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="js/results.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+    <script>
+        var baseRef = new Firebase('https://studywithme.firebaseio.com/');
+        var id = localStorage.getItem('userID');
+        //var id = 50;
+        function tempAdd()
+        {
+            baseRef.child('users/50').set({name:"Geo", email:"poop@cornell.edu"})
+            var user = baseRef.child('users/50').on('value', function(snapshot){
+                var classes = snapshot.val().classes;
+                console.log(classes);
+                if(classes.indexOf("CS3110") > -1)
+                {
+                    console.log("YESS IT WORKS");
+                }
+            });
+            console.log(classes);            
+        }
+
+        function isEnrolled(className, cb)
+        {
+            var query = 'users/' + id;
+            
+            var userInfo = baseRef.child(query).once('value', function(snapshot){
+                var classes = snapshot.val().classes;
+                if(classes == null)
+                {
+                    cb(false);
+                }
+                else if (classes.indexOf(className) > -1) 
+                {
+                    cb(true);
+                } 
+                else 
+                {
+                    cb(false);
+                }
+                
+            });
+
+        }
+
+        function addClass()
+        {
+            var className = $('#classdrop').val();
+            var html;
+
+
+            isEnrolled(className, function(enrolled) {
+                console.log("Hits");
+                if(enrolled)
+                {
+                    if($("#notice").attr('class') == "unem hidden")
+                    {
+                        $("#notice").attr('class', 'unem');
+                    }
+                    html = $("#notice").html("<p> Already added </p>");
+                }
+                else
+                {
+                    if($("#notice").attr('class') == 'unem hidden')
+                    {
+                        $("#notice").attr('class', 'unem');
+                    }
+                    html = $("#notice").html("<p> Added to schedule </p>");
+
+                    var query = 'users/' + id;
+                    var updatedClasses = [];
+                    var userInfo = baseRef.child(query).once('value', function(snapshot){
+                        var classes = snapshot.val().classes;
+                        if(classes == null)
+                        {
+                            classes = [];
+                        }
+                        classes.push(className);
+                        baseRef.child(query).update({classes: classes}, function() { console.log("Successfully set"); });
+                    });
+                }
+            });
+        }
+
+    </script>
+</head>
+
+               <div id = "filters">
+
+            <ul class="nav nav-pills nav-stacked">
+                  
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" onclick="class_show()" href="#">Choose Class<b class="caret"></b></a>
+                  </li>
+
+
+                  <div id = "classes" class ="innav">
+                    <input id = "classdrop" type="text" data-provide="typeahead" placeholder="Enter class here" autocomplete="off"></br>
+					  <button class="btn" id = "add" type="button" onclick="addClass()">Add to Classes</button>
+                  </div> 
+                  <p id = "notice" class = "unem hidden"> placeholder </p>
+                  <div class="span1"><a class="btn" href="displayClass.html"><i class=" icon-home"></i></a></div>
+
+</div>   
+
+
+</body>
+</html>
