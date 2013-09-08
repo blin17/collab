@@ -1,16 +1,123 @@
+*{
+	margin:0px;
+}
+
+body{
+	background-color:#FFD49E;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.row{
+	margin-left: 0px;
+}
 #top{
-	background-color: #b3b;
-	height:2px;
+	background-color: #87cefa;
+	height:5px;
+}	
+#top2{
+		background-color: #FFC67D;
+		height:10px;
 }
 .header{
 	background-image: url(../img/pattern.png);
 	background-repeat: repeat;
-	background-color: #FFF;
+	background-color: #fff;
+}
+.btn.left{
+	margin:4px;
+}
+.btn.right{
+	margin:4px;
+}
+.cover{	
 	height: 100px;
+}
+.action{
+	height:30px;
 }
 .left{
 	float:left;
 }
 .right{
 	float:right;
+}
+.login{
+	margin-top:10px;
+}
+#body_cover{
+	display:block;
+}
+#logo{
+	display:block;
+	margin: 11px auto;
+}
+#body_cover input{
+	margin-bottom: 0px;
+}
+.header p{
+	float:left;
+	margin:0px;
+	font-size: 16pt;
+	line-height:29pt;
+	text-align: center;
+  vertical-align: middle;
+}
+.middle{
+	display:block;
+	margin: 4px auto;
+	position:absolute;
+	left: 37%;
+}
+
+li{
+	padding:3px;
+}
+
+.classes a:nth-child(odd) li{
+    background-color: #FFD49E;   
+}
+
+.classes a:hover{
+	text-decoration: none;  
+}
+
+.class_list{
+	padding:5px;
+	margin-top:2px;
+	font-size:40pt;
+	line-height:40pt;
+	text-align: center;
+  vertical-align: middle;
+	height:50px;
+}
+
+.messages li:nth-child(odd){
+    background-color: #FFD49E;   
+}
+
+.message{
+	padding:5px;
+	margin-top:2px;
+	height:50px;
+	line-height:50px;
+}
+
+.message_info{
+	width:100px;
+	float:left;
+	font-size:10pt;
+	line-height:10pt;
+}
+.message_name{
+	font-family: "Helvetica";
+	font-weight:bold;
+}
+.message_time{
+	color: #4D90FE;
+	font-size: 8pt;
+}
+.message_message{
+	color: #666;
+font-size:10pt;
+line-height:12pt;
+	
 }

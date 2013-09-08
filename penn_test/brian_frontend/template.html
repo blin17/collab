@@ -18,19 +18,23 @@
     </head>
     <body>
 	
-    <div id="deviceready" class="blink">
-		<div class="event loaded_app">
 			
 <!-- start with header-->
+
 				<div id = "top"> </div>
-				<div class="header"><img src="img/logo.png" alt="logo"/>
-				</div>
-				
+				<div class="row header cover"><img src="img/logo.png" alt="logo" id= "logo"/></div>
+				<div id = "top2"> </div>
+
 <!-- body if necessary -->
-			<h3 id = 'name'></h3>
-			<div id='messagesDiv'></div>
-		
-			
+<div id = "body_cover">
+	<div id = "body_top"></div>
+	<ul class="nav nav-pills nav-stacked">
+		<li>	<input class="input-block-level" type='text' id='email' placeholder='john.doe@school.edu'></li>
+		<li>	<input class="input-block-level" type='password' id='password' placeholder='*********'></li>
+		<li>     <input type="submit" action= "class.html" value="Log In" class= "btn btn-warning btn-block"></li>
+		<li>     <a href= "register.html" class="btn btn-block reg_btn" >Register</a></li>
+	</ul>
+</div>			
 <!-- finish with footer-->
 
 <div class="row footer">

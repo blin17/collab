@@ -1,29 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Register</title>
-    <style>
-      span { color:red; }
-    </style>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>  
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <script type='text/javascript'
-        src='https://cdn.firebase.com/v0/firebase-simple-login.js'>
-    </script>
-    
-  </head>
+    <head>
+		<!-- metadata -->
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-  <body>
-    <form id="register" action= "class.html">
-      Create your free Collab account now<br>
+<!-- stylesheets -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/style2.css" rel="stylesheet">
+	
+<!-- scripts -->
+		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+		
+        <title>Collab</title>
+    </head>
+    <body>
+	
+    <div id="deviceready" class="blink">
+		<div class="event loaded_app">
+			
+<!-- start with header-->
+<div id = "action">
+				<div id = "top"> </div>
+				<div class="row header">
+					
+					<a class="btn left" href="class.html"><i class=" icon-home"></i></a>
+					<div class="middle">
+					<p>CS 4780<p>
+					</div> 
+					<a class="btn right" href="message.html"><i class=" icon-pencil"></i></a>
+					<a class="btn right" href="message.html"><i class="icon-globe"></i></a>
+				</div>
+</div>	
+<!-- body if necessary -->
 
-      Name: <input type="text" id="name"><br>
-      School Email: <input type="text" id="email"><br>
-      Password: <input type="password" id="password"><br>
-      Confirm Password: <input type="password" id="confirmPassword"><br>
-      <input type="submit" value="Submit"><br>
-    </form>
-    <span></span>
-    <script src="js/register.js"></script>
-  </body>
+<div id = "body">
+	
+	<ul class="nav nav-tabs nav-stacked messages">
+		<li class = "message">
+			<div class="message_info">
+				<p class="message_name">Brian Lin </p>
+				<p class="message_time">5:19 PM</p></div> <div class="message_message">Great job guys!</div>
+		</li>		
+		<li class = "message">
+				<div class="message_info">
+					<p class="message_name">Matt Oey</p>
+					<p class="message_time">4:30 PM</p></div> <div class="message_message">Coming by too!</div>
+		</li>		
+		<li class = "message">
+				<div class="message_info">
+					<p class="message_name">Brian Lin </p>
+					<p class="message_time">4:29 PM</p></div> <div class="message_message">I noticed that we're all in the Engineering Quad. Let's meet in Duffield in 5 min</div>
+		</li>		
+		<li class = "message">
+				<div class="message_info">
+					<p class="message_name">Toshi Noguchi </p>
+					<p class="message_time">4:18 PM</p></div> <div class="message_message">I need help too. Anyone want to meet up?</div>
+		</li>		
+		<li class = "message">
+				<div class="message_info">
+					<p class="message_name">George Xu</p>
+					<p class="message_time">4:16 PM</p></div> <div class="message_message">Hey class, I need help with PSET 1</div>
+		</li>	
+	</ul>
+	
+	</div>
+			
+<!-- finish with footer-->
+
+<div class="row footer">
+	<div class="span2"></div>
+	<div class="span2"></div>
+</div>
+
+
+        <script type="text/javascript" src="js/class.js"></script>
+    </body>
 </html>
