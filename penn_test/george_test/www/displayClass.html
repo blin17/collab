@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Collab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script charset="UTF-8" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script> 
+
+
+</head>
+
+<body onload= "onload()">
+    <h1 id ='header'></h1>
+    <div id='classDiv'></div>
+    <div class="span1"><a class="btn" href="addClasses.html"><i class=" icon-home"></i></a></div>
+
+	
+	<script>
+	
+    var id = localStorage.getItem('userID');
+    console.log(id);
+    var baseRef = new Firebase('https://studywithme.firebaseio.com/');
+    //var id = 50;
+    function onload(display){
+        displayName(function(display, classes)
+        {
+            document.getElementById("header").innerHTML = display;
+            console.log(classes);
+            console.log(classes.length);
+        
+            for(var i = 0; i < classes.length; i++)
+            {
+                debugger;
+                $('<div/>').html("<a href = \"message.html\" onclick = \"saveClass("+classes[i]+")\">" + classes[i] + "</a>").appendTo($('#classDiv'));
+
+                $('#classDiv')[0].scrollTop = $('#classDiv')[0].scrollHeight;
+            }
+        });
+	}
+
+    function saveClass(classID)
+    {
+        var c = classID;
+        debugger;
+        localStorage.saveItem('classID', classID);
+    }
+
+    function displayName(cb)
+    {
+      document.getElementById()
+      var query = "users/" + id;
+      baseRef.child(query).once('value', function(snapshot){
+        display = "Classes for " + snapshot.val().name;
+        cb(display, snapshot.val().classes);
+      });
+    }
+	</script>
+</body>
+</html>
