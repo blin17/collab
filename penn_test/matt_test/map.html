@@ -1,0 +1,46 @@
+<html>
+<head>
+   <title>Leaflet Fullscreen Example</title>
+   
+   <!--
+   ***IMPORTANT!! call remove() to kill everything when done with the map to ensure that memory doesn't get destroyed
+-->
+
+    <!-- stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+   
+   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		
+   <style>
+   html, body, #map {
+      height:100%;
+      width:100%;
+      padding:0px;
+      margin:0px;
+   } 
+   </style>
+   
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	 <!--[if lte IE 8]>
+	     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+	 <![endif]-->
+   
+   <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+   <script src="map.js"></script>
+   <script type='text/javascript' src="https://cdn.firebase.com/v0/firebase.js"></script>
+
+
+</head>
+<body>
+   <a class="btn right" href="template_schedule.html" onclick='recenter()'><i class=" icon-ok"></i></a>
+   <div id="map"></div><br>
+
+   <script>post()</script>
+
+</body>                                                                                                                          
+</html>
+    
