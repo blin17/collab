@@ -2,6 +2,7 @@ var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
 
 $("#login").submit(function() {
 	console.log("login credentials submitted");
+	//debugger;
 	var email = $("#email").val();
 	var password = $("#password").val();
 	var success = 0;
@@ -37,6 +38,7 @@ $("#login").submit(function() {
 		}
 		return false;
 	});
+	console.log('email: ' + email + ' password: ' + password)
 	auth.login('password', {
 		email: email,
 		password: password,
@@ -56,9 +58,9 @@ $("#login").submit(function() {
 
 	return false;
 	*/
-	console.log("hello");
-	if (success == 1){
-		return true;
-	}
+	// console.log("hello");
+	// if (success == 1){
+	// 	return true;
+	// }
 	return false;
  });
