@@ -52,31 +52,27 @@ var app = {
 // Get a reference to the root of the chat data.
 var messagesRef = new Firebase('https://studywithme.firebaseio.com/messages');
 var usersRef = new Firebase('https://studywithme.firebaseio.com/users/');
+var classID = localStorage.getItem('classID');
 // Add a callback that is triggered for each chat message.
 messagesRef.limit(10).on('child_added', function (snapshot) {
 	var user_name = "";
 	var message = snapshot.val();
 	
 	var userRef = usersRef.child(message.userID).on('value', function(names){
-		user_name = names.val().name;
-	    $('<div/>').text(message.text).prepend($('<em/>')
-	      .text(user_name+' '+message.time+': ')).prependTo($('#messagesDiv'));
-	    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-	})
+		user = names.val();
+		if (user!=null){
+		  user_name = names.val().name;
+		}
+		else{
+			user_name = "";
+		}
+        debugger;
+		if(classID == message.classID)
+        {
+    	    $('<div/>').text(message.text).prepend($('<em/>')
+    	      .text(user_name+' '+message.time+': ')).prependTo($('#messagesDiv'));
+    	    $('#messagesDiv')[0].scrollTop= $('#messagesDiv')[0].scrollHeight;
+	    }
+    })
 
 });	
-	var chatRef = new Firebase('https://studywithme.firebaseio.com/');
-	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-	if (error) {
-	   // an error occurred while attempting login
-	   console.log(error);
-	   $("span").text("Login Error").show().fadeOut(500);
-	   return false;
-	} else if (user) {
-	alert(user.id);
-
-	} else {
-	  // user is logged out
-	}
-	return false;
-});

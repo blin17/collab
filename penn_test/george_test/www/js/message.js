@@ -6,13 +6,14 @@ var lon = 0;
 
 function post(){
     if (navigator.geolocation){
-		navigator.geolocation.getCurrentPosition(showPosition);
+		navigator.geolocation.getCurrentPosition(showPosition, error);
     }
  }
 
 function update(){
-	var UID = 11; //userID 
-	var CID = 1; //classID
+  debugger;
+	var UID = localStorage.getItem('userID'); //userID 
+	var CID = localStorage.getItem('classID'); //classID
 	var text = $('#messageInput').val();
 	var time = getTime();
 	messagesRef.push({userID:UID, classID: CID, lat:lat, lon:lon, text:text, time:time});
@@ -21,9 +22,17 @@ function update(){
 
 function showPosition(position, cb)
 {
+  debugger;
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
 	update();
+}
+
+function error()
+{
+  lat = 0;
+  lon = 0;
+  update();
 }
 
 function getTime(){

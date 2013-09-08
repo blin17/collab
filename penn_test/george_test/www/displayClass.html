@@ -40,11 +40,8 @@
         
             for(var i = 0; i < classes.length; i++)
             {
-                var d = document.createElement("a");
-                d.attr("href", "message.html");
-                d.attr("onclick", function(){saveClass(classes[i])});
-                d.appendTo($('#classDiv'));
-                //$('<div/>').html("<a href = \"message.html\" onclick = \"saveClass("+classes[i]+")\">" + classes[i] + "</a>").appendTo($('#classDiv'));
+                console.log(classes);
+                $('<div/>').html("<a href = \"class.html\" onclick = \"saveClass('"+classes[i]+"')\">" + classes[i] + "</a>").appendTo($('#classDiv'));
 
                 $('#classDiv')[0].scrollTop = $('#classDiv')[0].scrollHeight;
             }
@@ -53,9 +50,7 @@
 
     function saveClass(classID)
     {
-        var c = classID;
-        debugger;
-        localStorage.saveItem('classID', classID);
+        localStorage.setItem('classID', ''+classID);
     }
 
     function displayName(cb)
