@@ -83,7 +83,7 @@ li{
 .class_list{
 	padding:5px;
 	margin-top:2px;
-	font-size:40pt;
+	font-size:25pt;
 	line-height:40pt;
 	text-align: center;
   vertical-align: middle;
@@ -119,5 +119,50 @@ li{
 	color: #666;
 font-size:10pt;
 line-height:12pt;
-	
+}
+
+#map{
+	background-color: black;
+	height:450px;
+	width:100%;
+}
+
+.info{
+	padding: 10px 0px 0px 10px;
+	font-size:10pt;
+	line-height:5pt;
+}
+.info_time{
+color: #4D90FE;
+font-size: 8pt;
+
+}
+.info_name{
+	font-family: "Helvetica";
+	font-weight:bold;
+}
+.search{
+		display:block;
+		margin: 4px auto;
+		position:absolute;
+		left: 16%;
+		width: 68%;
+}
+
+
+.add_classes a:nth-child(odd) li{
+    background-color: #FFD49E;   
+}
+
+.add_classes a:hover{
+	text-decoration: none;  
+}
+
+.add_class{
+	padding:5px;
+	margin-top:2px;
+	font-size:20pt;
+	line-height:20pt;
+	padding-left: 10px;
+	height:30px;
 }
